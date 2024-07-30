@@ -1,4 +1,4 @@
-#Operaciones aritmetricas (ejercicio 1.1)
+#ejercicio 1.1 (Operaciones aritmetricas)
 #promedio de duraciones
 tiempo_curso_dalto = 1.5 
 tiempo_curso_minimo = 2.5
@@ -35,7 +35,7 @@ print("------------------------------------")
 print("------------------------------------")
 print(f"ver 10h de este curso equivalen a ver {tiempo_curso_promedio *1000 // tiempo_curso_dalto / 100} horas de otros cursos")
 
-#ejercicio 1.2
+#ejercicio 1.2 (utilizando input, metodos de cadena, operaciones aritmetricas y condicionales)
 #teniendo encuenta que la persona dice 2 palabras por 1 segundo y dalto lo dice un 30% mas rapido
 #le pedimos al usuario la frase para calcular
 frase = input("Digamme un frase para calcular cuanto tardarias en decirlo: ")
@@ -55,7 +55,7 @@ if cantidad_de_palabras > 120:
 else: 
     print("hablas rapido che")
 
-#ejecicio 1.3
+#ejecicio 1.3 (utilizando input, funciones, condicionales y operaciones comparativas)
 ingreso_mensual = int(input("digite su ingreso mensual porfavor:"))
 
 if ingreso_mensual > 10000:    #si se cumple esta condicion se activa el primer codigo if (primera condicon)
@@ -74,7 +74,7 @@ elif ingreso_mensual > 200:
 else:
     print("sos pobre")  #si ninguna de las condiciones se complieron entonces se activa este codigo de else (de lo contrario)
 
-#ejecicio 1.4
+#ejecicio 1.4 (utilizando input, condicionales)
 contraseña_registrada = "carlos"
 contraseña_ingresada = input("ingrese la contraseña porfavor: ")
 
@@ -92,7 +92,7 @@ if contraseña_registrada != contraseña_ingresada:
     print("contraseña incorrecta")
     print("intente de nuevo")
 
-#ejecicio 1.5
+#ejecicio 1.5 (utilizando input, metodos de listas, y bucles for)
 asignaturas = ["Matemáticas", "Física", "Química", "Historia", "Lengua"]
 notas = list([])
 
@@ -103,6 +103,37 @@ for asignatura in asignaturas:
 for i in range(len(asignaturas)):
     print("----------------------------------------")
     print(f"En {asignaturas[i]} saco: {notas[i]}")
+
+#ejercicios 1.6 (creando funciones)
+
+#1.6.1
+def saludar(nombre, sexo ):
+    sexo = sexo.lower()
+    if sexo == "mujer":
+        adjetivo = "profesora"
+    elif sexo == "hombre":
+        adjetivo = "profesor"
+    else:
+        adjetivo = "amor"
+    print(f"hola {nombre}, mi {adjetivo} como estas")
+    
+saludar("camila", "mujer")
+saludar("raul", "hombre")
+saludar("daniela", "no binario")
+
+#1.6.2
+def crear_contraseña_random(num):
+    chars = "abcdefghij"
+    num_entero = str(num)  #esto es para comvertir el numero a texto, para despues solo tomar el primer numero y volverloa convertir en numero con la fucnion int()
+    num = int(num_entero[0])
+    c1 = num - 2
+    c2 = num
+    c3 = num - 5
+    contraseña = f"{chars[c1]}{chars[c2]}{chars[c3]}{num*2}"
+    print(contraseña)
+
+crear_contraseña_random(1)
+
     
 
 
