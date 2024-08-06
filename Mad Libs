@@ -1,0 +1,77 @@
+import random
+
+# Función para obtener una palabra del usuario
+def obtener_palabra(tipo):
+    return input(f"Por favor, ingresa un(a) {tipo}: ")
+
+# Plantillas de historias con espacios en blanco
+historias = [
+    """
+    Una vez había un(a) {sustantivo} que vivía en {lugar}. Cada día, este(a) {sustantivo}
+    gustaba de {verbo} con sus amigos {sustantivo_plural}. Un día, encontraron un(a) {objeto}
+    misterioso y decidieron {verbo2} para ver qué había dentro. ¡Qué sorpresa se llevaron al
+    encontrar un(a) {sustantivo2} dentro! Desde ese día, siempre recordarán la vez que encontraron
+    el(a) {objeto}.
+    """,
+    """
+    En un lejano {lugar}, había un(a) valiente {sustantivo} llamado {nombre}. {nombre} tenía la
+    misión de {verbo} el {objeto}, que estaba custodiado por un(a) feroz {sustantivo2}. Con la ayuda
+    de sus leales {sustantivo_plural}, {nombre} emprendió el viaje. Después de muchas aventuras,
+    finalmente lograron {verbo2} y recuperar el {objeto}.
+    """
+]
+
+# Función para seleccionar una historia
+def seleccionar_historia():
+    print("Selecciona una historia:")
+    for i, _ in enumerate(historias):
+        print(f"{i + 1}. Historia {i + 1}")
+    seleccion = int(input("Ingresa el número de la historia que quieres jugar: ")) - 1
+    return historias[seleccion]
+
+# Función para completar la historia con las palabras proporcionadas
+def completar_historia(historia):
+    sustantivo = obtener_palabra("sustantivo")
+    lugar = obtener_palabra("lugar")
+    verbo = obtener_palabra("verbo")
+    sustantivo_plural = obtener_palabra("sustantivo plural")
+    objeto = obtener_palabra("objeto")
+    verbo2 = obtener_palabra("otro verbo")
+    sustantivo2 = obtener_palabra("otro sustantivo")
+    nombre = obtener_palabra("nombre propio")
+
+    return historia.format(
+        sustantivo=sustantivo,
+        lugar=lugar,
+        verbo=verbo,
+        sustantivo_plural=sustantivo_plural,
+        objeto=objeto,
+        verbo2=verbo2,
+        sustantivo2=sustantivo2,
+        nombre=nombre
+    )
+
+# Función para guardar la historia en un archivo
+def guardar_historia(historia_completa):
+    with open("historia_mad_libs.txt", "w") as archivo:
+        archivo.write(historia_completa)
+    print("Tu historia ha sido guardada en 'historia_mad_libs.txt'.")
+
+# Función principal del juego
+def jugar_mad_libs():
+    while True:
+        historia = seleccionar_historia()
+        historia_completa = completar_historia(historia)
+        print("\nAquí está tu historia de Mad Libs:")
+        print(historia_completa)
+        
+        opcion = input("¿Te gustaría guardar esta historia? (s/n): ").lower()
+        if opcion == 's':
+            guardar_historia(historia_completa)
+        
+        opcion = input("¿Te gustaría jugar de nuevo? (s/n): ").lower()
+        if opcion != 's':
+            break
+
+# Ejecutar el juego
+jugar_mad_libs()
